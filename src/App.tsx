@@ -1,44 +1,48 @@
-import { useState } from "react";
-import TabButton from "./Components/Tab";
-import CardComponent from "./Components/Card";
+import products from "./data/products.json";
+import { catalogProps } from "./common/types/types";
 import TabContent from "./Components/TabContent";
-import Pagination from "./Components/Pagination";
-import { koreanProducts, productProps } from "./data/KoreanProducts";
+import TabBar from "./Components/TabBar";
+import { useState } from "react";
+import { tab } from "@testing-library/user-event/dist/tab";
+import CardComponent from "./Components/Card";
+
+const fetch = JSON.parse(JSON.stringify(products));
 
 function App() {
-    const [active, setActive] = useState<number>(1);
+    const data: catalogProps = fetch;
+    const [active, setActive] = useState<number>(0);
     const handleClick = (idx: number) => {
         setActive(idx);
     };
+    console.log(active);
     return (
         <div className="App relative mx-auto">
-            <TabButton active={active} handleClick={handleClick} />
-
-            <TabContent active={active} idx={1} title={"Korean Products"}>
-                {koreanProducts.map(
-                    ({ img, title, moq, price }: productProps) => (
-                        <div key={title}>
-                            <CardComponent
-                                img={img}
-                                title={title}
-                                moq={moq}
-                                price={price}
-                            ></CardComponent>
-                        </div>
-                    )
-                )}
-            </TabContent>
-            <TabContent
-                active={active}
-                idx={2}
-                title={"Chinese Products"}
-            ></TabContent>
-            <TabContent
-                active={active}
-                idx={3}
-                title={"Japanese Products"}
-            ></TabContent>
-            <Pagination />
+            {data.catalog.map((ele, index) => (
+                <TabBar
+                    key={index}
+                    active={active}
+                    handleClick={handleClick}
+                    tabName={data.catalog[index].prod_group}
+                    index={index}
+                ></TabBar>
+            ))}
+            {data.catalog.map((ele, index) => (
+                <TabContent
+                    key={index}
+                    active={active}
+                    tabName={data.catalog[index].prod_group}
+                    index={index}
+                >
+                    {ele.prod_items.map((e) => (
+                        <CardComponent
+                            img={e.title}
+                            title={e.title}
+                            moq={e.moq}
+                            price={e.price}
+                        />
+                    ))}
+                </TabContent>
+            ))}
         </div>
     );
 }
