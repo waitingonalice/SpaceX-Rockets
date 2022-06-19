@@ -1,8 +1,6 @@
 import React, { ReactElement } from "react";
 import "../Styles/headers.css";
 import "../Styles/TabContent.css";
-import { productProps } from "../common/types/types";
-import CardComponent from "../Components/Card";
 
 export interface TabContentProps {
     active: number;

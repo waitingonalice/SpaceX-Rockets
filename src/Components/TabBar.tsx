@@ -1,6 +1,4 @@
-import React, { ReactElement } from "react";
 import "../Styles/tabs.css";
-import TabContent from "./TabContent";
 
 interface tabButtonProp {
     handleClick: (idx: number) => void;
@@ -15,7 +13,7 @@ export default function TabBar({
     tabName,
     index,
 }: tabButtonProp) {
-    const className = index === active ? "active-tab" : "tab";
+    const className: string = index === active ? "active-tab" : "tab";
     return (
         <div className={className}>
             <li>

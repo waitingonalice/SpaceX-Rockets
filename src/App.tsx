@@ -1,31 +1,34 @@
-import products from "./data/products.json";
 import { catalogProps } from "./common/types/types";
 import TabContent from "./Components/TabContent";
 import TabBar from "./Components/TabBar";
 import { useState } from "react";
-import { tab } from "@testing-library/user-event/dist/tab";
 import CardComponent from "./Components/Card";
+import "./Styles/tabs.css";
 
-const fetch = JSON.parse(JSON.stringify(products));
-
+const fetch = require("./data/products.json");
+console.dir(fetch);
 function App() {
     const data: catalogProps = fetch;
     const [active, setActive] = useState<number>(0);
     const handleClick = (idx: number) => {
         setActive(idx);
     };
-    console.log(active);
+
     return (
         <div className="App relative mx-auto">
-            {data.catalog.map((ele, index) => (
-                <TabBar
-                    key={index}
-                    active={active}
-                    handleClick={handleClick}
-                    tabName={data.catalog[index].prod_group}
-                    index={index}
-                ></TabBar>
-            ))}
+            <div className="tab-container border-solid border 2 border-b-slate-300 -m-[1px] overflow-y-hidden overflow-x-auto whitespace-nowrap">
+                <ul className="flex">
+                    {data.catalog.map((ele, index) => (
+                        <TabBar
+                            key={index}
+                            active={active}
+                            handleClick={handleClick}
+                            tabName={data.catalog[index].prod_group}
+                            index={index}
+                        ></TabBar>
+                    ))}
+                </ul>
+            </div>
             {data.catalog.map((ele, index) => (
                 <TabContent
                     key={index}
@@ -35,6 +38,7 @@ function App() {
                 >
                     {ele.prod_items.map((e) => (
                         <CardComponent
+                            key={e.title}
                             img={e.title}
                             title={e.title}
                             moq={e.moq}
