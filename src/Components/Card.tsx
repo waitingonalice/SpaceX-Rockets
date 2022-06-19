@@ -1,5 +1,5 @@
 import React from "react";
-import { productProps } from "../data/KoreanProducts";
+import { productProps } from "../common/types/types";
 
 function CardComponent(props: productProps) {
     return (

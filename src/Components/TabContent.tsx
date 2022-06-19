@@ -1,20 +1,23 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import "../Styles/headers.css";
 import "../Styles/TabContent.css";
+import { productProps } from "../common/types/types";
+import CardComponent from "../Components/Card";
+
 export interface TabContentProps {
     active: number;
-    idx: number;
-    title: string | number;
-    children?: any;
+    index: number;
+    tabName: string;
+    children: ReactElement[];
 }
 
-function TabContent(props: TabContentProps) {
-    return props.active === props.idx ? (
+function TabContent({ active, index, tabName, children }: TabContentProps) {
+    return active === index ? (
         <div className="px-11 py-16">
             <div className="text-gray-400 font-semibold">Catalog</div>
-            <h1>{props.title}</h1>
+            <h1>{tabName}</h1>
             <div className="card-content grid gap-10 justify-center sm:justify-start py-4">
-                {props.children}
+                {children}
             </div>
         </div>
     ) : null;
