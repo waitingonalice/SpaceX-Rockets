@@ -3,6 +3,7 @@ import TabContent from "./Components/TabContent";
 import TabBar from "./Components/TabBar";
 import { useState } from "react";
 import CardComponent from "./Components/Card";
+
 import "./Styles/tabs.css";
 
 const fetch = require("./data/products.json");
@@ -39,7 +40,7 @@ function App() {
                     {ele.prod_items.map((e) => (
                         <CardComponent
                             key={e.title}
-                            img={e.title}
+                            img={e.img}
                             title={e.title}
                             moq={e.moq}
                             price={e.price}
