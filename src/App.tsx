@@ -1,11 +1,11 @@
-import { catalogProps } from "./common/types/types";
-import TabContent from "./Components/TabContent";
-import TabBar from "./Components/TabBar";
-import { useState } from "react";
-import CardComponent from "./Components/Card";
-import "./Styles/tabs.css";
+import { catalogProps } from './common/types/types';
+import TabContent from './Components/TabContent';
+import TabBar from './Components/TabBar';
+import { useState } from 'react';
+import CardComponent from './Components/Card';
+import './Styles/tabs.css';
 
-const fetch = require("./data/products.json");
+const fetch = require('./data/products.json');
 console.dir(fetch);
 function App() {
     const data: catalogProps = fetch;
