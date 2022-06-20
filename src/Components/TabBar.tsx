@@ -15,7 +15,7 @@ export default function TabBar({
 }: tabButtonProp) {
     const className: string = index === active ? 'active-tab' : 'tab';
     return (
-        <div className={className}>
+        <div className={className} role="button">
             <li>
                 <button onClick={() => handleClick(index)}>{tabName}</button>
             </li>

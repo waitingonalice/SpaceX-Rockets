@@ -18,35 +18,37 @@ function App() {
         <div className="App relative mx-auto">
             <div className="tab-container border-solid border 2 border-b-slate-300 -m-[1px] overflow-y-hidden overflow-x-auto whitespace-nowrap">
                 <ul className="flex">
-                    {data.catalog.map((ele, index) => (
-                        <TabBar
-                            key={index}
-                            active={active}
-                            handleClick={handleClick}
-                            tabName={data.catalog[index].prod_group}
-                            index={index}
-                        ></TabBar>
-                    ))}
+                    {data &&
+                        data.catalog.map((ele, index) => (
+                            <TabBar
+                                key={index}
+                                active={active}
+                                handleClick={handleClick}
+                                tabName={data.catalog[index].prod_group}
+                                index={index}
+                            ></TabBar>
+                        ))}
                 </ul>
             </div>
-            {data.catalog.map((ele, index) => (
-                <TabContent
-                    key={index}
-                    active={active}
-                    tabName={data.catalog[index].prod_group}
-                    index={index}
-                >
-                    {ele.prod_items.map((e) => (
-                        <CardComponent
-                            key={e.title}
-                            img={e.img}
-                            title={e.title}
-                            moq={e.moq}
-                            price={e.price}
-                        />
-                    ))}
-                </TabContent>
-            ))}
+            {data &&
+                data.catalog.map((ele, index) => (
+                    <TabContent
+                        key={index}
+                        active={active}
+                        tabName={data.catalog[index].prod_group}
+                        index={index}
+                    >
+                        {ele.prod_items.map((e) => (
+                            <CardComponent
+                                key={e.title}
+                                url={e.img}
+                                title={e.title}
+                                moq={e.moq}
+                                price={e.price}
+                            />
+                        ))}
+                    </TabContent>
+                ))}
         </div>
     );
 }
