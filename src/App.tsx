@@ -3,7 +3,6 @@ import { catalogProps } from "./common/types/types";
 import TabContent from "./Components/TabContent";
 import TabBar from "./Components/TabBar";
 import { useState } from "react";
-import { tab } from "@testing-library/user-event/dist/tab";
 import CardComponent from "./Components/Card";
 
 const fetch = JSON.parse(JSON.stringify(products));
@@ -35,7 +34,8 @@ function App() {
                 >
                     {ele.prod_items.map((e) => (
                         <CardComponent
-                            img={e.title}
+                            key={e.title}
+                            img={e.img}
                             title={e.title}
                             moq={e.moq}
                             price={e.price}

@@ -36,7 +36,7 @@
                 {
                     "title": "Product 2",
                     "img": "/images/soy.png",
-                    "moq": 20,
+                    "moq": 30,
                     "price": 4.5
                 },
                 {
@@ -59,7 +59,7 @@
                 {
                     "title": "Product 2",
                     "img": "/images/soy.png",
-                    "moq": 20,
+                    "moq": 40,
                     "price": 4.5
                 },
                 {

@@ -1,6 +1,4 @@
-import React, { ReactElement } from "react";
 import "../Styles/tabs.css";
-import TabContent from "./TabContent";
 
 interface tabButtonProp {
     handleClick: (idx: number) => void;
