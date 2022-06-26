@@ -1,26 +1,32 @@
-import '../Styles/tabs.css';
+import "../Styles/tabs.css";
 
-interface tabButtonProp {
+type tabButtonProp = {
     handleClick: (idx: number) => void;
     active: number;
-    tabName: string;
     index: number;
-}
+    tabName: string;
+};
 
 export default function TabBar({
     handleClick,
     active,
-    tabName,
     index,
+    tabName,
 }: tabButtonProp) {
-    const className: string = index === active ? 'active-tab' : 'tab';
+    const className: string = index === active ? "active-tab" : "tab";
+
     return (
-        <li
-            className={className}
-            onClick={() => handleClick(index)}
-            role="button"
-        >
-            {tabName}
-        </li>
+
+        <div className={className} role="button">
+            <li>
+                <button
+                    type="button"
+                    onClick={() => handleClick(index)}
+                    value={tabName}
+                >
+                    {tabName}
+                </button>
+            </li>
+        </div>
     );
 }

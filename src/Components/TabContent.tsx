@@ -1,12 +1,12 @@
-import { ReactElement } from 'react';
-import '../Styles/headers.css';
-import '../Styles/TabContent.css';
+import { ReactElement } from "react";
+import "../Styles/headers.css";
+import "../Styles/TabContent.css";
 
 export interface TabContentProps {
     active: number;
     index: number;
     tabName: string;
-    children: ReactElement[];
+    children: ReactElement[] | undefined;
 }
 
 function TabContent({ active, index, tabName, children }: TabContentProps) {

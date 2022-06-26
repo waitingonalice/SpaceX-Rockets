@@ -1,22 +1,30 @@
-import react from 'react';
+
+import React from "react";
+
 
 type cardProps = {
-    url: string;
-    title: string;
-    moq: number;
-    price: number;
+    mission_name: string;
+    launch_date_local: string;
+    rocket_name: string;
+    url?: string;
 };
-function CardComponent({ url, title, moq, price }: cardProps) {
+function CardComponent({
+    mission_name,
+    launch_date_local,
+    rocket_name,
+    url,
+}: cardProps) {
     return (
         <div className="shadow-lg rounded overflow-hidden border-solid border-2 w-[240px] h-[352px]">
             <div className="w-[240px] h-[240px] flex justify-center items-center bg-indigo-100">
-                <img className="w-[200px] h-[240px]" alt="product" src={url} />
+                <img className="w-[200px] h-[240px]" alt="product" />
             </div>
             <div className="p-3 flex flex-col space-y-1">
-                <div className="text-xl font-semibold ">{title}</div>
+                <div className="text-xl font-semibold ">{mission_name}</div>
                 <div className="text-gray-400 font-medium text-sm">
-                    <div>Quantity: {moq}</div>
-                    <div>Price: {price.toFixed(2)}</div>
+                    <div>Rocket: {rocket_name}</div>
+                    <div>Mission: {mission_name}</div>
+                    <div>Datetime: {launch_date_local}</div>
                 </div>
             </div>
         </div>
