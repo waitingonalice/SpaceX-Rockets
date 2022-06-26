@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import TabContent from "./Components/TabContent";
 import TabBar from "./Components/TabBar";
 import CardComponent from "./Components/Card";
-import { spaceXLaunchesPast } from "./common/types/types";
 import { SITE_QUERY } from "./API/fetchData";
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 
 const launchsite = [
     { launch_name: "CCAFS SLC 40" },
@@ -16,9 +15,9 @@ const launchsite = [
 function App() {
     const [active, setActive] = useState<number>(0);
     const [site, setSite] = useState<string>("CCAFS SLC 40");
-    // const [loading, setloading] = useState<boolean>(true);
     const variables = { site_name: site };
 
+    //sends query string, endpoint and variables to qgl server and returns results
     const [getLaunchSites, { loading, data }] = useLazyQuery(SITE_QUERY, {
         variables: variables,
     });
@@ -26,8 +25,6 @@ function App() {
     useEffect(() => {
         getLaunchSites();
     }, []);
-
-    //sends query string, endpoint and variables to qgl server and returns results
 
     const handleClick = (idx: number) => {
         setSite(launchsite[idx].launch_name);
@@ -53,7 +50,7 @@ function App() {
 
             <div>
                 {loading ? (
-                    <div>Loading</div>
+                    <div className="text-center">Loading</div>
                 ) : (
                     launchsite.map((e: any, index: number) => (
                         <TabContent
@@ -66,6 +63,7 @@ function App() {
                                 data.launchesPast.map((e: any, index: any) => (
                                     <CardComponent
                                         key={index}
+                                        url={e.links.flickr_images[0]}
                                         mission_name={e.mission_name}
                                         launch_date_local={e.launch_date_local}
                                         rocket_name={e.rocket.rocket_name}
