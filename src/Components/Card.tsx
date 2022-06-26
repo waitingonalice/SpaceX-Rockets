@@ -1,6 +1,4 @@
-
 import React from "react";
-
 
 type cardProps = {
     mission_name: string;
@@ -20,10 +18,10 @@ function CardComponent({
                 <img className="w-[200px] h-[240px]" alt="product" />
             </div>
             <div className="p-3 flex flex-col space-y-1">
-                <div className="text-xl font-semibold ">{mission_name}</div>
+                <div className="text-sm font-semibold ">{mission_name}</div>
                 <div className="text-gray-400 font-medium text-sm">
                     <div>Rocket: {rocket_name}</div>
-                    <div>Mission: {mission_name}</div>
+
                     <div>Datetime: {launch_date_local}</div>
                 </div>
             </div>

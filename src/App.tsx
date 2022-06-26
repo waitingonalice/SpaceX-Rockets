@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import TabContent from "./Components/TabContent";
 import TabBar from "./Components/TabBar";
 import CardComponent from "./Components/Card";
-import { spaceXSite, spaceXLaunchesPast } from "./common/types/types";
+import { spaceXLaunchesPast } from "./common/types/types";
 import { SITE_QUERY } from "./API/fetchData";
 import { useLazyQuery, useQuery } from "@apollo/client";
 
@@ -20,30 +20,21 @@ function App() {
     const variables = { site_name: site };
 
     const [getLaunchSites, { loading, data }] = useLazyQuery(SITE_QUERY, {
-        fetchPolicy: "network-only",
-        // nextFetchPolicy: "cache-first",
+        variables: variables,
     });
 
-    function launchSites(): void {
-        getLaunchSites({ variables: variables });
-    }
     useEffect(() => {
-        launchSites();
+        getLaunchSites();
     }, []);
 
     //sends query string, endpoint and variables to qgl server and returns results
 
     const handleClick = (idx: number) => {
         setSite(launchsite[idx].launch_name);
-        launchSites();
+        getLaunchSites();
         setActive(idx);
     };
-    // console.log(site);
-    // console.log(loading);
 
-    const launchData: spaceXSite = data;
-
-    console.dir(launchData);
     return (
         <div className="App relative mx-auto">
             <div className="tab-container border-solid border 2 border-b-slate-300 -m-[1px] overflow-y-hidden overflow-x-auto whitespace-nowrap">
@@ -72,8 +63,9 @@ function App() {
                             tabName={e.launch_name}
                         >
                             {data &&
-                                data.launchesPast.map((...e: any) => (
+                                data.launchesPast.map((e: any, index: any) => (
                                     <CardComponent
+                                        key={index}
                                         mission_name={e.mission_name}
                                         launch_date_local={e.launch_date_local}
                                         rocket_name={e.rocket.rocket_name}

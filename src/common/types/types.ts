@@ -29,25 +29,3 @@ export interface spaceXLaunchesPast {
 export interface spaceXSite {
     data: spaceXLaunchesPast;
 }
-
-export interface spaceXSiteProps {
-    mission_name: string;
-    launch_date_unix: string;
-    launch_site: { site_name: string };
-    rocket: { rocket_name: string };
-    links: { flickr_images: [string | undefined] };
-}
-
-export interface spaceXDataProps {
-    data: spaceXSiteProps[];
-}
-
-export interface spaceXObjects {
-    [data: string]: spaceXDataProps[];
-}
-
-export interface spaceXSiteTemplate {
-    site_name: string;
-    limit: number;
-    alias: string;
-}
