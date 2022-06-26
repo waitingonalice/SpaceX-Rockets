@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@headlessui/react": "^1.6.4",
@@ -15,8 +16,11 @@
     "@types/node": "^16.11.39",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-query": "^3.39.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
@@ -47,7 +51,9 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "eslint": "^8.18.0",
     "postcss": "^8.4.14",
+    "prettier": "2.7.1",
     "tailwindcss": "^3.1.2"
   }
 }
