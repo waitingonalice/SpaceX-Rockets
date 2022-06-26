@@ -27,6 +27,10 @@ export interface spaceXDataProps {
     data: spaceXSiteProps[];
 }
 
+export interface spaceXObjects {
+    [data: string]: spaceXDataProps[];
+}
+
 export interface spaceXSiteTemplate {
     site_name: string;
     limit: number;
