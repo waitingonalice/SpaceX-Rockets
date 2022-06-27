@@ -20,7 +20,8 @@
 
 
 .active-tab{
-    border-top: 3px solid blue;
-    color: blue;
+    border-top: 3px solid #4589ff;
+    color: #4589ff;
+    font-weight: 600;
 }
 

@@ -16,7 +16,6 @@ export default function TabBar({
     const className: string = index === active ? "active-tab" : "tab";
 
     return (
-
         <div className={className} role="button">
             <li>
                 <button

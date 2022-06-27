@@ -19,13 +19,14 @@ export interface spaceXSitesData {
     mission_name: string;
     launch_date_local: string;
     launch_site: { site_name: string };
-    links: { flickr_images: Array<string> | undefined };
+    links: { flickr_images: Array<string> };
     rocket: { rocket_name: string };
 }
 
 export interface spaceXLaunchesPast {
     launchesPast: spaceXSitesData[];
 }
-export interface spaceXSite {
+
+export interface spaceXData {
     data: spaceXLaunchesPast;
 }
